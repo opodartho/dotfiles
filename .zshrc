@@ -14,3 +14,5 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle frmendes/geometry
 # Tell antigen that it's done
 antigen apply
+
+source ~/.zshrc.local
