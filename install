@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+#echo "Installing dotfiles"
+
+#echo "Initializing submodule(s)"
+#git submodule update --init --recursive
+
+#source recipes/link.sh
+
+source recipes/prepare.sh
+source recipes/appearance.sh
