@@ -1,11 +1,17 @@
 #!/usr/bin/env bash
 
-#echo "Installing dotfiles"
+echo "Installing dotfiles"
 
-#echo "Initializing submodule(s)"
-#git submodule update --init --recursive
+echo "Initializing submodule(s)"
+git submodule update --init --recursive
 
-#source recipes/link.sh
+source recipes/link.sh
 
-source recipes/prepare.sh
-source recipes/appearance.sh
+source recipes/zsh.sh
+source recipes/nvim.sh
+
+source recipes/font-patch.sh
+source recipes/rbenv.sh
+source recipes/nodejs.sh
+
+source "${HOME}/.zshrc"
