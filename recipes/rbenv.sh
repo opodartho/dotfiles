@@ -6,9 +6,6 @@ if [ -d ~/.rbenv ]; then
 else
   sudo apt-get install -y libssl-dev libreadline-dev zlib1g-dev
   git clone git://github.com/rbenv/rbenv.git ~/.rbenv
-  echo 'export RBENV_ROOT=~/.rbenv' >> ~/.zshrc
-  echo 'export PATH="$RBENV_ROOT/bin:$PATH"' >> ~/.zshrc
-  echo 'eval "$(rbenv init -)"' >> ~/.zshrc
   source ~/.zshrc
   mkdir -p ~/.rbenv/plugins
   cd ~/.rbenv/plugins
