@@ -5,7 +5,12 @@ call plug#begin('~/.config/nvim/plugged')
 
 	Plug 'opodartho/neomake'
 	Plug 'opodartho/vim-linenum'
+
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'altercation/vim-colors-solarized'
 call plug#end()
+
 
 " Plugins settings
 
@@ -21,3 +26,11 @@ nmap <C-b> :CtrlPBuffer<cr>
 let g:ctrlp_dotfiles=1
 let ctrlp_working_path_mode="ra"
 
+" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'luna'
+
+" Solarized
+syntax on
+set background=dark
+colorscheme solarized

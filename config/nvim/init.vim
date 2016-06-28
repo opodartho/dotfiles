@@ -65,4 +65,8 @@ set invlist
 set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
 highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
 set showbreak=↪
-nmap <leader>l :set list!<cr>
+set list " display end of line
+
+set cursorline " display cursorline
+set ruler " display ruler
+set colorcolumn=80 "display line after 80 char
