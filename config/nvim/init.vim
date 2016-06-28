@@ -1,13 +1,14 @@
+" Map more leader keys
+let mapleader=','
+let g:mapleader=','
+
+" Load plugins
 source ~/.config/nvim/plugins.vim
 set nocompatible " not compatible with vi
 set autoread " detect when a file changed
 
 " stop acting backspace insane
 set backspace=indent,eol,start
-
-" Map more leader keys
-let mapleader=','
-let g:mapleader=','
 
 set textwidth=120
 " Tab control
@@ -50,6 +51,7 @@ noremap Q <NOP> " disable Ex mode
 
 inoremap jk <esc> " remap exc
 nmap <leader>, :w<cr> " shortcut to save
+nmap <leader>q :q<cr> " shortcut to save and quit
 
 " edit ~/.config/nvim/init.vim
 map <leader>ev :e! ~/.config/nvim/init.vim<cr>
