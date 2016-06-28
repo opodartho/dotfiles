@@ -1,6 +1,6 @@
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'ctrlpvim/ctrlp.vim'
-	Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons' 
+	Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
 	Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 
 	Plug 'opodartho/neomake'
@@ -28,7 +28,8 @@ let ctrlp_working_path_mode="ra"
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'luna'
+let g:airline_theme = 'solarized'
+let g:airline_powerline_fonts = 1
 
 " Solarized
 syntax on
