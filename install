@@ -16,4 +16,6 @@ source recipes/rbenv.sh
 source recipes/nodejs.sh
 source recipes/postgres.sh
 
+source recipes/powerline.sh
+
 source "${HOME}/.zshrc"

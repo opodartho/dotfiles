@@ -2,6 +2,7 @@
 
 # Set $package_manager to "apt-get" or "yum", or abort.
 #
+
 if which apt-get >/dev/null 2>&1; then
   export package_manager=apt-get
 elif which yum >/dev/null 2>&1; then
@@ -25,7 +26,7 @@ function package.mute() {
 #
 function package.installed() {
   if [ "$package_manager" = 'apt-get' ]; then
-    dmanager -s $@ >/dev/null 2>&1
+    dpkg-query -l $@ >/dev/null 2>&1
   elif [ "$package_manager" = 'yum' ]; then
     rpm -qa | grep $@ >/dev/null
   fi
@@ -41,7 +42,7 @@ function package.install() {
     return 1
   else
     echo "No packages found matching $@. Installing..."
-    package.mute "$package_manager -y install $@"
+    package.mute "sudo $package_manager -y install $@"
     return 0
   fi
 }

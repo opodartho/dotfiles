@@ -1,7 +1,9 @@
 call plug#begin('~/.config/nvim/plugged')
 	Plug 'ctrlpvim/ctrlp.vim'
 	Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
+
 	Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
+	Plug 'tpope/vim-commentary'
 
 	Plug 'opodartho/neomake'
 	Plug 'opodartho/vim-linenum'
@@ -9,6 +11,11 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'altercation/vim-colors-solarized'
+
+	Plug 'slim-template/vim-slim'
+	Plug 'airblade/vim-gitgutter'
+
+	Plug 'mileszs/ack.vim'
 call plug#end()
 
 

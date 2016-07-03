@@ -55,6 +55,7 @@ nmap <leader>q :q<cr> " shortcut to save and quit
 
 " edit ~/.config/nvim/init.vim
 map <leader>ev :e! ~/.config/nvim/init.vim<cr>
+map <leader>ep :e! ~/.config/nvim/plugins.vim<cr>
 map <leader>es :source ~/.config/nvim/init.vim<cr>
 
 " switch between current and last buffer
