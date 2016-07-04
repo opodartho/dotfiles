@@ -16,6 +16,7 @@ source recipes/rbenv.sh
 source recipes/nodejs.sh
 source recipes/postgres.sh
 
+source recipes/python-pip.sh
 source recipes/tmux.sh
 source recipes/powerline.sh
 

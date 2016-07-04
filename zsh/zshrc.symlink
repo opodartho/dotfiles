@@ -10,3 +10,8 @@ if [[ -d ~/.rbenv/bin ]]; then
     unset MANPATH # delete if you already modified MANPATH elsewhere in your config
     export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
 fi
+
+# add .local/bin into path
+if [[ -d $HOME/.local/bin ]]; then
+	export PATH="${HOME}/.local/bin:$PATH"
+fi
