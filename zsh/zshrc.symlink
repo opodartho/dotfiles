@@ -1,3 +1,8 @@
+# Source Theme Arc.
+if [[ -d $HOME/.dotfiles/zsh ]]; then
+    source $HOME/.dotfiles/zsh/theme.zsh
+fi
+
 # config rbenv
 if [[ -d ~/.rbenv/bin ]]; then
     export RBENV_ROOT=~/.rbenv
@@ -13,5 +18,5 @@ fi
 
 # add .local/bin into path
 if [[ -d $HOME/.local/bin ]]; then
-	export PATH="${HOME}/.local/bin:$PATH"
+    export PATH="${HOME}/.local/bin:$PATH"
 fi
