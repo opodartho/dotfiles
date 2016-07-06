@@ -1,0 +1,12 @@
+[user]
+	name = Zahidul Haque
+	email = iisowrovii@gmail.com
+[github]
+	user = opodartho
+[alias]
+	# list all aliases
+	la = "!git config -l | grep alias | cut -c 7-"
+	lg = log --graph --pretty=format:'%Cred%h%Creset %C(bold blue)%an%C(reset) - %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	st = status
+	br = branch -v
+	co = checkout
