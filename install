@@ -9,6 +9,7 @@ source recipes/package.sh
 source recipes/link.sh
 
 source recipes/zsh.sh
+source recipes/zplug.sh
 source recipes/nvim.sh
 
 source recipes/ack.sh
