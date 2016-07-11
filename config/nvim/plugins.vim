@@ -5,7 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-commentary'
 
-	Plug 'opodartho/neomake'
+	Plug 'neomake/neomake'
 	Plug 'opodartho/vim-linenum'
 
 	Plug 'vim-airline/vim-airline'
@@ -16,6 +16,8 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'airblade/vim-gitgutter'
 
 	Plug 'mileszs/ack.vim'
+
+	Plug 'garbas/vim-snipmate' | Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim'
 call plug#end()
 
 
@@ -23,7 +25,7 @@ call plug#end()
 
 " NERDTree
 let g:NERDTreeQuitOnOpen=0 " close NERDTree after a file is opened
-let NERDTreeShowHidden=1 " show hidden files in NERDTree
+let NERDTreeShowHidden=0 " stop display hidden files in NERDTree
 let NERDTreeIgnore = ['\.js.map$'] " remove some files by extension
 nmap <silent> <leader>k :NERDTreeToggle<cr> " Toggle NERDTree
 nmap <silent> <leader>y :NERDTreeFind<cr> " expand to the path of the file in the current buffer
@@ -42,3 +44,7 @@ let g:airline_powerline_fonts = 1
 syntax on
 set background=dark
 colorscheme solarized
+
+" Neomake
+let g:neomake_ruby_enabled_makerd = ['mri', 'rubocop']
+let g:neomake_slim_enabled_makers = ['slimlint']
