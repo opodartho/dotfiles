@@ -34,6 +34,7 @@ augroup configgroup
 	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType ruby setlocal ts=2 sts=2 sw=2 expandtab
 	autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
+	autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 	" automatically resize panes on resize
 	autocmd VimResized * exe 'normal! \<c-w>='

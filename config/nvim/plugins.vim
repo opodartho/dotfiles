@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 	Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
 	Plug 'tpope/vim-commentary'
+	Plug 'tpope/vim-endwise'
 
 	Plug 'neomake/neomake'
 	Plug 'opodartho/vim-linenum'
@@ -18,6 +19,9 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'mileszs/ack.vim'
 
 	Plug 'garbas/vim-snipmate' | Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim'
+	Plug 'honza/vim-snippets'
+
+	Plug 'Raimondi/delimitMate' " automatic closing of quotes, parenthesis, brackets, etc.
 call plug#end()
 
 
@@ -48,3 +52,7 @@ colorscheme solarized
 " Neomake
 let g:neomake_ruby_enabled_makerd = ['mri', 'rubocop']
 let g:neomake_slim_enabled_makers = ['slimlint']
+let g:neomake_javascript_jscs_maker = {
+	\ 'args': ['--no-colors', '--reporter', 'inline', '--preset=airbnb'],
+	\ 'errorformat': '%f: line %l\, col %c\, %m',
+\}
