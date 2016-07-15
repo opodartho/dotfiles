@@ -16,5 +16,5 @@ else
 
 	#create user and database
 	sudo -u postgres psql -c "create user sowrov with password 'password';"
-	sudo -u postgres psql -c "ALTER USER sowrov CREATEDB;"
+	sudo -u postgres psql -c "ALTER USER sowrov Superuser;"
 fi
