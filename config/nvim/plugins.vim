@@ -18,6 +18,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 	Plug 'mileszs/ack.vim'
 
+	Plug 'majutsushi/tagbar'
+
 	Plug 'garbas/vim-snipmate' | Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim'
 	Plug 'honza/vim-snippets'
 
@@ -56,3 +58,7 @@ let g:neomake_javascript_jscs_maker = {
 	\ 'args': ['--no-colors', '--reporter', 'inline', '--preset=airbnb'],
 	\ 'errorformat': '%f: line %l\, col %c\, %m',
 \}
+
+" Tagbar toggle
+nmap <F8> :TagbarToggle<CR>
+

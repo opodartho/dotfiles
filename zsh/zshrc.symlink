@@ -35,3 +35,9 @@ fi
 
 # set default editor
 export EDITOR='vim'
+
+# load aliases
+source $HOME/.dotfiles/zsh/aliases.zsh
+
+# tmuxinator completion
+source $HOME/.dotfiles/zsh/tmuxinator.zsh
