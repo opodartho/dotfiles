@@ -31,3 +31,4 @@ for config in $DOTFILES/config/*; do
 		ln -s $config $target
 	fi
 done
+echo -e "\n"
