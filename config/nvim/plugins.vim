@@ -24,6 +24,9 @@ call plug#begin('~/.config/nvim/plugged')
 	Plug 'honza/vim-snippets'
 
 	Plug 'Raimondi/delimitMate' " automatic closing of quotes, parenthesis, brackets, etc.
+
+	Plug 'takac/vim-hardtime'
+	Plug 'wikitopian/hardmode'
 call plug#end()
 
 
@@ -62,3 +65,8 @@ let g:neomake_javascript_jscs_maker = {
 " Tagbar toggle
 nmap <F8> :TagbarToggle<CR>
 
+" Hardtime
+let g:hardtime_default_on = 0
+
+" Hardmode
+" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()

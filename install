@@ -8,6 +8,7 @@ git submodule update --init --recursive
 source recipes/package.sh
 source recipes/link.sh
 
+source recipes/capslock.sh
 source recipes/zsh.sh
 source recipes/zplug.sh
 source recipes/nvim.sh
