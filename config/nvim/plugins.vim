@@ -63,7 +63,7 @@ let g:neomake_javascript_jscs_maker = {
 \}
 
 " Tagbar toggle
-nmap <F8> :TagbarToggle<CR>
+nmap <silent> <leader>t :TagbarToggle<CR>
 
 " Hardtime
 let g:hardtime_default_on = 0
