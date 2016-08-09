@@ -27,6 +27,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 	Plug 'takac/vim-hardtime'
 	Plug 'wikitopian/hardmode'
+	Plug 'schickling/vim-bufonly'
 call plug#end()
 
 
@@ -61,6 +62,9 @@ let g:neomake_javascript_jscs_maker = {
 	\ 'args': ['--no-colors', '--reporter', 'inline', '--preset=airbnb'],
 	\ 'errorformat': '%f: line %l\, col %c\, %m',
 \}
+
+" BufOnly
+nmap <silent> <leader>b :BufOnly<CR>
 
 " Tagbar toggle
 nmap <silent> <leader>t :TagbarToggle<CR>
