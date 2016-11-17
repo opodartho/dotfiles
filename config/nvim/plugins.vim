@@ -27,6 +27,7 @@ call plug#begin('~/.config/nvim/plugged')
 
 	Plug 'takac/vim-hardtime'
 	Plug 'wikitopian/hardmode'
+
 	Plug 'schickling/vim-bufonly'
 call plug#end()
 
