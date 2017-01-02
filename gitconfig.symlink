@@ -1,7 +1,7 @@
 [user]
 	name = Zahidul Haque
 	email = iisowrovii@gmail.com
-	signingkey = 7F2A46929DA03F65
+	signingkey = D410BAA7480A9770
 [github]
 	user = opodartho
 [alias]
@@ -12,3 +12,8 @@
 	br = branch -v
 	co = checkout
 	cm = commit -S
+	cme = commit --allow-empty
+	f = fetch
+
+[push]
+	default = simple

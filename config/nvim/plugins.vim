@@ -1,50 +1,46 @@
 call plug#begin('~/.config/nvim/plugged')
-	Plug 'ctrlpvim/ctrlp.vim'
-	Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] } | Plug 'Xuyuanp/nerdtree-git-plugin' | Plug 'ryanoasis/vim-devicons'
+  Plug 'junegunn/fzf', { 'do': './install --all' }
+  Plug 'junegunn/fzf.vim'
+  " navigate up a directory with '-' in netrw, among other things
+  Plug 'tpope/vim-vinegar'
 
-	Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
-	Plug 'tpope/vim-commentary'
-	Plug 'tpope/vim-endwise'
+  Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-endwise'
 
-	Plug 'neomake/neomake'
-	Plug 'opodartho/vim-linenum'
+  Plug 'neomake/neomake'
 
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'altercation/vim-colors-solarized'
+  Plug 'opodartho/vim-linenum'
 
-	Plug 'slim-template/vim-slim'
-	Plug 'airblade/vim-gitgutter'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
+  Plug 'altercation/vim-colors-solarized'
 
-	Plug 'mileszs/ack.vim'
+  Plug 'slim-template/vim-slim'
+  Plug 'airblade/vim-gitgutter'
 
-	Plug 'majutsushi/tagbar'
+  Plug 'mileszs/ack.vim'
 
-	Plug 'garbas/vim-snipmate' | Plug 'MarcWeber/vim-addon-mw-utils' | Plug 'tomtom/tlib_vim'
-	Plug 'honza/vim-snippets'
+  Plug 'Raimondi/delimitMate' " automatic closing of quotes, parenthesis, brackets, etc.
 
-	Plug 'Raimondi/delimitMate' " automatic closing of quotes, parenthesis, brackets, etc.
+  Plug 'takac/vim-hardtime'
 
-	Plug 'takac/vim-hardtime'
-	Plug 'wikitopian/hardmode'
-
-	Plug 'schickling/vim-bufonly'
+  Plug 'schickling/vim-bufonly'
+  Plug 'elixir-lang/vim-elixir'
 call plug#end()
 
 
 " Plugins settings
 
-" NERDTree
-let g:NERDTreeQuitOnOpen=0 " close NERDTree after a file is opened
-let NERDTreeShowHidden=0 " stop display hidden files in NERDTree
-let NERDTreeIgnore = ['\.js.map$'] " remove some files by extension
-nmap <silent> <leader>k :NERDTreeToggle<cr> " Toggle NERDTree
-nmap <silent> <leader>y :NERDTreeFind<cr> " expand to the path of the file in the current buffer
-
-" CtrlP
-nmap <C-b> :CtrlPBuffer<cr>
-let g:ctrlp_dotfiles=1
-let ctrlp_working_path_mode="ra"
+" FZF fuzzy finder
+" let g:fzf_layout = { 'window': 'enew' }
+nnoremap <silent> <C-P> :FZF<cr>
+nnoremap <silent> <leader>a :Ag<cr>
+augroup localfzf
+  autocmd!
+  autocmd FileType fzf :tnoremap <buffer> <C-J> <C-J>
+  autocmd FileType fzf :tnoremap <buffer> <C-K> <C-K>
+augroup END
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
@@ -60,8 +56,8 @@ colorscheme solarized
 let g:neomake_ruby_enabled_makerd = ['mri', 'rubocop']
 let g:neomake_slim_enabled_makers = ['slimlint']
 let g:neomake_javascript_jscs_maker = {
-	\ 'args': ['--no-colors', '--reporter', 'inline', '--preset=airbnb'],
-	\ 'errorformat': '%f: line %l\, col %c\, %m',
+  \ 'args': ['--no-colors', '--reporter', 'inline', '--preset=airbnb'],
+  \ 'errorformat': '%f: line %l\, col %c\, %m',
 \}
 
 " BufOnly
@@ -72,6 +68,62 @@ nmap <silent> <leader>t :TagbarToggle<CR>
 
 " Hardtime
 let g:hardtime_default_on = 0
+let g:hardtime_showmsg = 0
 
-" Hardmode
-" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+" netrw file explorer
+
+fun! VexToggle(dir)
+  if exists("t:vex_buf_nr")
+    call VexClose()
+  else
+    call VexOpen(a:dir)
+  endif
+endf
+
+fun! VexOpen(dir)
+  let g:netrw_browse_split=4    " open files in previous window
+  let vex_width = 30
+
+  execute "Vexplore " . a:dir
+  let t:vex_buf_nr = bufnr("%")
+  wincmd H
+
+  call VexSize(vex_width)
+endf
+
+fun! VexClose()
+  let cur_win_nr = winnr()
+  let target_nr = ( cur_win_nr == 1 ? winnr("#") : cur_win_nr )
+
+  1wincmd w
+  close
+  unlet t:vex_buf_nr
+
+  execute (target_nr - 1) . "wincmd w"
+  call NormalizeWidths()
+endf
+
+fun! VexSize(vex_width)
+  execute "vertical resize" . a:vex_width
+  set winfixwidth
+  call NormalizeWidths()
+endf
+
+fun! NormalizeWidths()
+  let eadir_pref = &eadirection
+  set eadirection=hor
+  set equalalways! equalalways!
+  let &eadirection = eadir_pref
+endf
+
+augroup NetrwGroup
+  autocmd! BufEnter * call NormalizeWidths()
+augroup END
+
+let g:netrw_liststyle=3         " thin (change to 3 for tree)
+let g:netrw_banner=0            " no banner
+let g:netrw_altv=1              " open files on right
+let g:netrw_preview=1           " open previews vertically
+
+noremap <silent><Leader>k :call VexToggle(getcwd())<CR>
+noremap <silent><Leader>y :call VexToggle("")<CR>

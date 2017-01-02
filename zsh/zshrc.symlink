@@ -41,3 +41,11 @@ source $HOME/.dotfiles/zsh/aliases.zsh
 
 # tmuxinator completion
 source $HOME/.dotfiles/zsh/tmuxinator.zsh
+
+# neovim
+export PATH="$HOME/neovim/bin:$PATH"
+
+# gpg key id
+export GPGKEY=1861B081
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
