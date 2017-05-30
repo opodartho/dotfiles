@@ -9,12 +9,12 @@ else
 	sudo apt -y install postgresql libpq-dev
 
 	#enable password authentication
-	sudo cp files/pg_hba.conf /etc/postgresql/9.5/main/pg_hba.conf
-	sudo chown postgres:postgres /etc/postgresql/9.5/main/pg_hba.conf
-	sudo chmod 640 /etc/postgresql/9.5/main/pg_hba.conf
+	sudo cp files/pg_hba.conf /etc/postgresql/9.6/main/pg_hba.conf
+	sudo chown postgres:postgres /etc/postgresql/9.6/main/pg_hba.conf
+	sudo chmod 640 /etc/postgresql/9.6/main/pg_hba.conf
 	sudo service postgresql restart
 
 	#create user and database
-	sudo -u postgres psql -c "create user sowrov with password 'password';"
-	sudo -u postgres psql -c "ALTER USER sowrov Superuser;"
+	# sudo -u postgres psql -c "create user sowrov with password 'password';"
+	# sudo -u postgres psql -c "ALTER USER sowrov Superuser;"
 fi
