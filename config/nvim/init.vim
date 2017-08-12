@@ -101,3 +101,5 @@ set colorcolumn=80 "display line after 80 char
 " python
 let g:python_host_prog = '/usr/bin/python'
 let g:python3_host_prog = '/usr/bin/python3'
+
+map <leader>m :!clear; gcc % -o %< && ./%<<CR>

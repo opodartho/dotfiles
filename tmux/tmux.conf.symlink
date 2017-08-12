@@ -61,3 +61,6 @@ set-option -g pane-active-border-fg colour240 #base01
 # colorize messages in the command line
 set-option -g message-bg black #base02
 set-option -g message-fg brightred #orange
+
+# mouse on
+set -g mouse on

@@ -27,6 +27,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'schickling/vim-bufonly'
   Plug 'elixir-lang/vim-elixir'
+  Plug 'mxw/vim-jsx'
 call plug#end()
 
 
@@ -72,13 +73,13 @@ set background=dark
 colorscheme solarized
 
 " Neomake
-let g:neomake_ruby_enabled_makerd = ['mri', 'rubocop']
+let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
 let g:neomake_slim_enabled_makers = ['slimlint']
-let g:neomake_javascript_jscs_maker = {
+let g:neomake_javascript_eslint_maker = {
   \ 'args': ['--no-colors', '--reporter', 'inline', '--preset=airbnb'],
   \ 'errorformat': '%f: line %l\, col %c\, %m',
 \}
-
+let g:neomake_javascript_enabled_markers = ['eslint']
 " BufOnly
 nmap <silent> <leader>b :BufOnly<CR>
 
@@ -89,6 +90,9 @@ nmap <silent> <leader>t :TagbarToggle<CR>
 let g:hardtime_default_on = 0
 let g:hardtime_showmsg = 0
 
+" vim-jsx
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+let g:syntastic_javascript_checkers = ['eslint']
 " netrw file explorer
 
 fun! VexToggle(dir)
