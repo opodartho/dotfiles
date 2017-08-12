@@ -1,3 +1,4 @@
+if which tmux> /dev/null; then alias t='tmux'; fi
 if which tmuxinator> /dev/null; then alias mux='tmuxinator'; fi
 if which docker-compose> /dev/null; then alias dcompose='docker-compose'; fi
 if which exercism> /dev/null; then alias excm='exercism'; fi

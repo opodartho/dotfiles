@@ -55,3 +55,7 @@ export GPGKEY=1861B081
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# enable history
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000000
+export SAVEHIST=10000000
