@@ -1,4 +1,4 @@
-source $HOME/.local/lib/python3.5/site-packages/powerline/bindings/tmux/powerline.conf
+source $HOME/.pyenv/versions/3.6.3/lib/python3.6/site-packages/powerline/bindings/tmux/powerline.conf
 # use UTF8
 set -g utf8
 set-window-option -g utf8 on

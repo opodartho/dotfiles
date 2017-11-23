@@ -1,0 +1,11 @@
+Host bpro.prod
+  HostName 54.164.128.15
+  User ec2-user
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+
+Host bpro.stg
+  HostName 54.165.46.196
+  User ec2-user
+  Port 22
+  IdentityFile ~/.ssh/id_rsa

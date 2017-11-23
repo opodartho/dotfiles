@@ -1,43 +1,53 @@
 # Plugins
 if [[ -d ~/.zplug ]];then
-	source ~/.zplug/init.zsh
+  source ~/.zplug/init.zsh
 
-	zplug "zplug/zplug"
-	zplug "zsh-users/zsh-autosuggestions"
-	zplug "opodartho/arc"
+  zplug "zplug/zplug"
+  zplug "zsh-users/zsh-autosuggestions"
+  zplug "opodartho/arc"
   zplug "zsh-users/zsh-syntax-highlighting", defer:3
   zplug "eendroroy/zed-zsh"
 
-	# Install plugins if there are plugins that have not been installed
-	if ! zplug check --verbose; then
-		zplug install
-	fi
+  # Install plugins if there are plugins that have not been installed
+  if ! zplug check --verbose; then
+    zplug install
+  fi
 
-	zplug load
+  zplug load
 fi
 
 # config rbenv
 if [[ -d ~/.rbenv/bin ]]; then
-	export RBENV_ROOT=~/.rbenv
-	export PATH="$RBENV_ROOT/bin:$PATH"
-	eval "$(rbenv init -)"
-	# NPM global install without sudo
-	NPM_PACKAGES="${HOME}/.npm-packages"
-	export PATH="$NPM_PACKAGES/bin:$PATH"
-	# Unset manpath so we can inherit from /etc/manpath via the `manpath` command
-	unset MANPATH # delete if you already modified MANPATH elsewhere in your config
-	export MANPATH="$NPM_PACKAGES/share/man:$(manpath)"
+  export RBENV_ROOT=~/.rbenv
+  export PATH="$RBENV_ROOT/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
+
+if [[ -d ~/.pyenv/bin ]]; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
 fi
 
 if [[ -d ~/.nodenv/bin ]]; then
   export PATH="$HOME/.nodenv/bin:$PATH"
   eval "$(nodenv init -)"
 fi
+
+if [[ -d ~/.exenv/bin ]]; then
+  export PATH="$HOME/.exenv/bin:$PATH"
+  eval "$(exenv init -)"
+fi
 # add .local/bin into path
 if [[ -d $HOME/.local/bin ]]; then
-	export PATH="${HOME}/.local/bin:$PATH"
+  export PATH="${HOME}/.local/bin:$PATH"
 fi
 
+# export cargo path into environment
+
+if [[ -d $HOME/.cargo/bin ]]; then
+  export PATH="${HOME}/.cargo/bin:$PATH"
+fi
 # set default editor
 export EDITOR='vim'
 

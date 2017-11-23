@@ -15,5 +15,3 @@ source recipes/nvim.sh
 
 source recipes/ack.sh
 source recipes/font-patch.sh
-source recipes/tmux.sh
-source recipes/powerline.sh
