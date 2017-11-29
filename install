@@ -2,7 +2,4 @@
 
 git submodule update --init --recursive
 
-SCRIPT_ROOT="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
-
-RECIPES_PATH="${SCRIPT_ROOT}/.dotfiles/recipes"
-source "${RECIPES_PATH}/link.sh"
+source "${HOME}/.dotfiles/recipes/link.sh"
