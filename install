@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-echo "Installing dotfiles"
-
-echo "Initializing submodule(s)"
 git submodule update --init --recursive
 
-source recipes/link.sh
+SCRIPT_ROOT="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+RECIPES_PATH="${SCRIPT_ROOT}/recipes"
+source "${RECIPES_PATH}/link.sh"
