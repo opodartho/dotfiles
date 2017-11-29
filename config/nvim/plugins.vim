@@ -33,6 +33,10 @@ call plug#end()
 
 " Plugins settings
 
+" Slim plugin
+autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
+autocmd BufNewFile,BufRead *.slime setlocal filetype=slim
+
 " FZF fuzzy finder
 " let g:fzf_layout = { 'window': 'enew' }
 nnoremap <silent> <C-P> :FZF<cr>
