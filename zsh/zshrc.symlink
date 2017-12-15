@@ -38,6 +38,12 @@ if [[ -d ~/.exenv/bin ]]; then
   export PATH="$HOME/.exenv/bin:$PATH"
   eval "$(exenv init -)"
 fi
+
+if [[ -d ~/.goenv/bin ]]; then
+  export PATH="$HOME/.goenv/bin:$PATH"
+  eval "$(goenv init -)"
+fi
+
 # add .local/bin into path
 if [[ -d $HOME/.local/bin ]]; then
   export PATH="${HOME}/.local/bin:$PATH"
@@ -48,6 +54,12 @@ fi
 if [[ -d $HOME/.cargo/bin ]]; then
   export PATH="${HOME}/.cargo/bin:$PATH"
 fi
+
+# aws cli auto completion
+if [[ -a $HOME/.local/bin/aws_zsh_completer.sh ]]; then
+  source $HOME/.local/bin/aws_zsh_completer.sh
+fi
+
 # set default editor
 export EDITOR='vim'
 
