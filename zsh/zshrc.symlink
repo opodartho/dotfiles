@@ -39,8 +39,9 @@ if [[ -d ~/.exenv/bin ]]; then
   eval "$(exenv init -)"
 fi
 
-if [[ -d ~/.goenv/bin ]]; then
-  export PATH="$HOME/.goenv/bin:$PATH"
+if [[ -d $HOME/.goenv/bin ]]; then
+  export GOENV_ROOT="$HOME/.goenv"
+  export PATH="$GOENV_ROOT/bin:$PATH"
   eval "$(goenv init -)"
 fi
 
@@ -81,3 +82,7 @@ export GPGKEY=1861B081
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000000
 export SAVEHIST=10000000
+
+# Docker Compose Auto completion
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i

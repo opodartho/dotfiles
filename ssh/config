@@ -9,3 +9,19 @@ Host bpro.stg
   User ec2-user
   Port 22
   IdentityFile ~/.ssh/id_rsa
+
+Host ifc.prod
+  HostName 34.224.227.73
+  User deployer
+  IdentityFile ~/.ssh/bi_tool_prod.pem
+
+Host ifc.stg
+  HostName 52.5.190.156
+  User deployer
+  IdentityFile ~/.ssh/ifc-staging.pem
+
+Host r2reapp.stg
+  HostName 185.3.94.225
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
