@@ -14,7 +14,8 @@ call plug#begin('~/.config/nvim/plugged')
 
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  Plug 'altercation/vim-colors-solarized'
+  " Plug 'altercation/vim-colors-solarized'
+  Plug 'challenger-deep-theme/vim'
 
   Plug 'slim-template/vim-slim'
   Plug 'airblade/vim-gitgutter'
@@ -68,13 +69,19 @@ nnoremap <silent> <C-B> :call fzf#run({
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'solarized'
+let g:airline_theme = 'minimalist'
 let g:airline_powerline_fonts = 1
 
 " Solarized
-syntax on
-set background=dark
-colorscheme solarized
+" syntax on
+" set background=dark
+" colorscheme solarized
+
+colorscheme challenger_deep
+
+if has('nvim') || has('termguicolors')
+  set termguicolors
+endif
 
 " Neomake
 let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
