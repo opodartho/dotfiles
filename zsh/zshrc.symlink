@@ -45,6 +45,11 @@ if [[ -d $HOME/.goenv/bin ]]; then
   eval "$(goenv init -)"
 fi
 
+if [[ -d $HOME/.erlenv/bin ]]; then
+  export PATH="$HOME/.erlenv/bin:$PATH"
+  eval "$(erlenv init -)"
+fi
+
 # add .local/bin into path
 if [[ -d $HOME/.local/bin ]]; then
   export PATH="${HOME}/.local/bin:$PATH"
