@@ -39,7 +39,6 @@ autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
 autocmd BufNewFile,BufRead *.slime setlocal filetype=slim
 
 " FZF fuzzy finder
-" let g:fzf_layout = { 'window': 'enew' }
 nnoremap <silent> <C-P> :FZF<cr>
 nnoremap <silent> <leader>a :Ag<cr>
 augroup localfzf
@@ -69,7 +68,7 @@ nnoremap <silent> <C-B> :call fzf#run({
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'minimalist'
+let g:airline_theme = 'challenger_deep'
 let g:airline_powerline_fonts = 1
 
 " Solarized
@@ -77,11 +76,9 @@ let g:airline_powerline_fonts = 1
 " set background=dark
 " colorscheme solarized
 
+let g:challenger_deep_terminal_italics = 1
+let g:challenger_deep_termcolors = 16
 colorscheme challenger_deep
-
-if has('nvim') || has('termguicolors')
-  set termguicolors
-endif
 
 " Neomake
 let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
