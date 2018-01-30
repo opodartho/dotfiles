@@ -29,6 +29,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'schickling/vim-bufonly'
   Plug 'elixir-lang/vim-elixir'
   Plug 'mxw/vim-jsx'
+  Plug 'scrooloose/nerdtree'
 call plug#end()
 
 
@@ -103,58 +104,63 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:syntastic_javascript_checkers = ['eslint']
 " netrw file explorer
 
-fun! VexToggle(dir)
-  if exists("t:vex_buf_nr")
-    call VexClose()
-  else
-    call VexOpen(a:dir)
-  endif
-endf
+" fun! VexToggle(dir)
+"   if exists("t:vex_buf_nr")
+"     call VexClose()
+"   else
+"     call VexOpen(a:dir)
+"   endif
+" endf
 
-fun! VexOpen(dir)
-  let g:netrw_browse_split=4    " open files in previous window
-  let vex_width = 30
+" fun! VexOpen(dir)
+"   let g:netrw_browse_split=4    " open files in previous window
+"   let vex_width = 30
 
-  execute "Vexplore " . a:dir
-  let t:vex_buf_nr = bufnr("%")
-  wincmd H
+"   execute "Vexplore " . a:dir
+"   let t:vex_buf_nr = bufnr("%")
+"   wincmd H
 
-  call VexSize(vex_width)
-endf
+"   call VexSize(vex_width)
+" endf
 
-fun! VexClose()
-  let cur_win_nr = winnr()
-  let target_nr = ( cur_win_nr == 1 ? winnr("#") : cur_win_nr )
+" fun! VexClose()
+"   let cur_win_nr = winnr()
+"   let target_nr = ( cur_win_nr == 1 ? winnr("#") : cur_win_nr )
 
-  1wincmd w
-  close
-  unlet t:vex_buf_nr
+"   1wincmd w
+"   close
+"   unlet t:vex_buf_nr
 
-  execute (target_nr - 1) . "wincmd w"
-  call NormalizeWidths()
-endf
+"   execute (target_nr - 1) . "wincmd w"
+"   call NormalizeWidths()
+" endf
 
-fun! VexSize(vex_width)
-  execute "vertical resize" . a:vex_width
-  set winfixwidth
-  call NormalizeWidths()
-endf
+" fun! VexSize(vex_width)
+"   execute "vertical resize" . a:vex_width
+"   set winfixwidth
+"   call NormalizeWidths()
+" endf
 
-fun! NormalizeWidths()
-  let eadir_pref = &eadirection
-  set eadirection=hor
-  set equalalways! equalalways!
-  let &eadirection = eadir_pref
-endf
+" fun! NormalizeWidths()
+"   let eadir_pref = &eadirection
+"   set eadirection=hor
+"   set equalalways! equalalways!
+"   let &eadirection = eadir_pref
+" endf
 
-augroup NetrwGroup
-  autocmd! BufEnter * call NormalizeWidths()
-augroup END
+" augroup NetrwGroup
+"   autocmd! BufEnter * call NormalizeWidths()
+" augroup END
 
-let g:netrw_liststyle=3         " thin (change to 3 for tree)
-let g:netrw_banner=0            " no banner
-let g:netrw_altv=1              " open files on right
-let g:netrw_preview=1           " open previews vertically
+" let g:netrw_liststyle=3         " thin (change to 3 for tree)
+" let g:netrw_banner=0            " no banner
+" let g:netrw_altv=1              " open files on right
+" let g:netrw_preview=1           " open previews vertically
 
-noremap <silent><Leader>k :call VexToggle(getcwd())<CR>
-noremap <silent><Leader>y :call VexToggle("")<CR>
+" noremap <silent><Leader>k :call VexToggle(getcwd())<CR>
+" noremap <silent><Leader>y :call VexToggle("")<CR>
+
+" NerdTree
+nnoremap <silent><Leader>k :NERDTreeToggle<CR>
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
