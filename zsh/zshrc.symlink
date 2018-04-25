@@ -43,6 +43,8 @@ if [[ -d $HOME/.goenv/bin ]]; then
   export GOENV_ROOT="$HOME/.goenv"
   export PATH="$GOENV_ROOT/bin:$PATH"
   eval "$(goenv init -)"
+  export GOPATH="$HOME/gocode"
+  export PATH="$GOPATH/bin:$PATH"
 fi
 
 if [[ -d $HOME/.erlenv/bin ]]; then

@@ -13,7 +13,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'opodartho/vim-linenum'
 
   Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  " Plug 'vim-airline/vim-airline-themes'
   " Plug 'altercation/vim-colors-solarized'
   Plug 'challenger-deep-theme/vim'
 
