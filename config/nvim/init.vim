@@ -6,6 +6,7 @@ let g:mapleader=','
 source ~/.config/nvim/plugins.vim
 set nocompatible " not compatible with vi
 set autoread " detect when a file changed
+set autowrite
 
 " stop acting backspace insane
 set backspace=indent,eol,start
@@ -43,6 +44,7 @@ augroup configgroup
   autocmd FileType scss setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType json setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
 
   " automatically resize panes on resize
   autocmd VimResized * exe 'normal! \<c-w>='

@@ -30,6 +30,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'elixir-lang/vim-elixir'
   Plug 'mxw/vim-jsx'
   Plug 'scrooloose/nerdtree'
+
+  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
 
 
@@ -90,7 +92,7 @@ let g:neomake_javascript_eslint_maker = {
 \}
 let g:neomake_javascript_enabled_markers = ['eslint']
 " BufOnly
-nmap <silent> <leader>b :BufOnly<CR>
+nmap <silent> <leader>x :BufOnly<CR>
 
 " Tagbar toggle
 nmap <silent> <leader>t :TagbarToggle<CR>
@@ -102,65 +104,45 @@ let g:hardtime_showmsg = 0
 " vim-jsx
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:syntastic_javascript_checkers = ['eslint']
-" netrw file explorer
-
-" fun! VexToggle(dir)
-"   if exists("t:vex_buf_nr")
-"     call VexClose()
-"   else
-"     call VexOpen(a:dir)
-"   endif
-" endf
-
-" fun! VexOpen(dir)
-"   let g:netrw_browse_split=4    " open files in previous window
-"   let vex_width = 30
-
-"   execute "Vexplore " . a:dir
-"   let t:vex_buf_nr = bufnr("%")
-"   wincmd H
-
-"   call VexSize(vex_width)
-" endf
-
-" fun! VexClose()
-"   let cur_win_nr = winnr()
-"   let target_nr = ( cur_win_nr == 1 ? winnr("#") : cur_win_nr )
-
-"   1wincmd w
-"   close
-"   unlet t:vex_buf_nr
-
-"   execute (target_nr - 1) . "wincmd w"
-"   call NormalizeWidths()
-" endf
-
-" fun! VexSize(vex_width)
-"   execute "vertical resize" . a:vex_width
-"   set winfixwidth
-"   call NormalizeWidths()
-" endf
-
-" fun! NormalizeWidths()
-"   let eadir_pref = &eadirection
-"   set eadirection=hor
-"   set equalalways! equalalways!
-"   let &eadirection = eadir_pref
-" endf
-
-" augroup NetrwGroup
-"   autocmd! BufEnter * call NormalizeWidths()
-" augroup END
-
-" let g:netrw_liststyle=3         " thin (change to 3 for tree)
-" let g:netrw_banner=0            " no banner
-" let g:netrw_altv=1              " open files on right
-" let g:netrw_preview=1           " open previews vertically
-
-" noremap <silent><Leader>k :call VexToggle(getcwd())<CR>
-" noremap <silent><Leader>y :call VexToggle("")<CR>
 
 " NerdTree
 nnoremap <silent><Leader>k :NERDTreeToggle<CR>
 
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" vim-go
+let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
+let g:go_fmt_fail_silently = 1
+let g:go_addtags_transform = "camelcase"
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_deadline = '10s'
+
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>c :cclose<cr>
+
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
+
+autocmd FileType go nmap <Leader>gc <Plug>(go-coverage-toggle)
