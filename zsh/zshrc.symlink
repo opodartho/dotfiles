@@ -52,6 +52,11 @@ if [[ -d $HOME/.erlenv/bin ]]; then
   eval "$(erlenv init -)"
 fi
 
+# add .yarn/bin into path
+if [[ -d $(yarn global bin) ]]; then
+  export PATH="$(yarn global bin):$PATH"
+fi
+
 # add .local/bin into path
 if [[ -d $HOME/.local/bin ]]; then
   export PATH="${HOME}/.local/bin:$PATH"
