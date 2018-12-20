@@ -1,12 +1,30 @@
 Host bpro.prod
   HostName 54.164.128.15
-  User ec2-user
+  User ubuntu
   Port 22
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/webtrack.pem
 
 Host bpro.stg
   HostName 54.165.46.196
-  User ec2-user
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+
+Host btrack.stg
+  Hostname 34.197.34.16
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/webtrack.pem
+
+Host btrack.prod
+  Hostname 35.173.207.172
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/webtrack.pem
+
+Host flx.prod
+  Hostname 213.186.171.162
+  User karim-fawzi
   Port 22
   IdentityFile ~/.ssh/id_rsa
 
@@ -20,8 +38,13 @@ Host ifc.stg
   User deployer
   IdentityFile ~/.ssh/ifc-staging.pem
 
-Host r2reapp.stg
+Host r2reapp.prod
   HostName 185.3.94.225
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host b4p.prod
+  HostName 213.162.241.181
   User deployer
   Port 22
   IdentityFile ~/.ssh/id_rsa
