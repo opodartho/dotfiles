@@ -5,6 +5,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-vinegar'
 
   Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-rails'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-endwise'
 
@@ -31,9 +32,10 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mxw/vim-jsx'
   Plug 'scrooloose/nerdtree'
 
+  Plug 'mattn/emmet-vim'
+
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 call plug#end()
-
 
 " Plugins settings
 
