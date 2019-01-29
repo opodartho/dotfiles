@@ -6,9 +6,8 @@ Host bpro.prod
 
 Host bpro.stg
   HostName 54.165.46.196
-  User ec2-user
+  User deployer
   Port 22
-  IdentityFile ~/.ssh/id_rsa
 
 Host ifc.prod
   HostName 34.224.227.73

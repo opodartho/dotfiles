@@ -98,3 +98,18 @@ export SAVEHIST=10000000
 # Docker Compose Auto completion
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
+
+# kubectl autocomplete
+if [ $commands[kubectl] ]; then
+  source <(kubectl completion zsh)
+fi
+
+# only for building LFS
+export LFS=/mnt/lfs
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
+# aws auto complete
+if which aws_completer > /dev/null; then
+  source $(dirname $(which aws_completer))/aws_zsh_completer.sh
+fi

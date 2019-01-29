@@ -98,7 +98,7 @@ set list " display end of line
 set cursorline " display cursorline
 set ruler " display ruler
 
-set colorcolumn=80 "display line after 80 char
+set colorcolumn=99 "display line after 80 char
 
 " python
 let g:python_host_prog = '/usr/bin/python'
