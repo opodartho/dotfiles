@@ -33,3 +33,15 @@ $ cd ~/.rbenv && src/configure && make -C src
 $ mkdir -p "$(nodenv root)"/plugins
 $ git clone https://github.com/nodenv/node-build.git "$(nodenv root)"/plugins/node-build
 ```
+## rust
+```bash
+$ curl https://sh.rustup.rs -sSf | sh
+```
+### exa
+```bash
+$ cargo install exa
+```
+## tmux
+```bash
+$ sudo apt install tmux -y
+```

@@ -52,11 +52,6 @@ if [[ -d $HOME/.erlenv/bin ]]; then
   eval "$(erlenv init -)"
 fi
 
-# add .yarn/bin into path
-if [[ -d $(yarn global bin) ]]; then
-  export PATH="$(yarn global bin):$PATH"
-fi
-
 # add .local/bin into path
 if [[ -d $HOME/.local/bin ]]; then
   export PATH="${HOME}/.local/bin:$PATH"
@@ -66,11 +61,6 @@ fi
 
 if [[ -d $HOME/.cargo/bin ]]; then
   export PATH="${HOME}/.cargo/bin:$PATH"
-fi
-
-# aws cli auto completion
-if [[ -a $HOME/.local/bin/aws_zsh_completer.sh ]]; then
-  source $HOME/.local/bin/aws_zsh_completer.sh
 fi
 
 # set default editor
@@ -109,7 +99,7 @@ export LFS=/mnt/lfs
 fpath=(~/.zsh/completion $fpath)
 autoload -Uz compinit && compinit -i
 
-# aws auto complete
+# aws cli auto complete
 if which aws_completer > /dev/null; then
   source $(dirname $(which aws_completer))/aws_zsh_completer.sh
 fi
