@@ -22,7 +22,6 @@ set shiftwidth=2 " number of spaces to use for indent and unindent
 set shiftround " round indent to a multiple of 'shiftwidth'
 set completeopt+=longest
 
-
 " Disable the mouse
 if has('mouse')
   set mouse=""
@@ -99,6 +98,12 @@ set cursorline " display cursorline
 set ruler " display ruler
 
 set colorcolumn=99 "display line after 80 char
+
+" enable vim spell change
+setlocal spell
+
+" enable word completion from dictionary
+set complete+=kspell
 
 " python
 let g:python_host_prog = '/usr/bin/python'
