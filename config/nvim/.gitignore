@@ -1,4 +1,3 @@
-*
-!init.vim
-!plugins.vim
-!.gitignore
+autoload
+plugged
+spell

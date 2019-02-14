@@ -1,17 +1,33 @@
+set nocompatible " not compatible with vi
 " Map more leader keys
 let mapleader=','
 let g:mapleader=','
 
 " Load plugins
 source ~/.config/nvim/plugins.vim
-set nocompatible " not compatible with vi
+
+function! s:SourceConfigFilesIn(directory)
+  let directory_splat = '~/.config/nvim/' . a:directory . '/*'
+  for config_file in split(glob(directory_splat), '\n')
+    if filereadable(config_file)
+      execute 'source' config_file
+    endif
+  endfor
+endfunction
+
+call plug#begin('~/.config/nvim/plugged')
+call s:SourceConfigFilesIn('rcplugins')
+call plug#end()
+
+call s:SourceConfigFilesIn('rcfiles')
+
 set autoread " detect when a file changed
 set autowrite
 
 " stop acting backspace insane
 set backspace=indent,eol,start
 
-set textwidth=120
+set textwidth=80
 " Tab control
 set expandtab " insert tabs rather than spaces for <Tab>
 set smarttab " tab respects 'tabstop', 'shiftwidth', and 'softtabstop'

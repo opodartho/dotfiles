@@ -9,14 +9,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-endwise'
 
-  Plug 'neomake/neomake'
 
-  Plug 'opodartho/vim-linenum'
 
   Plug 'vim-airline/vim-airline'
-  " Plug 'vim-airline/vim-airline-themes'
-  " Plug 'altercation/vim-colors-solarized'
-  Plug 'challenger-deep-theme/vim'
 
   Plug 'slim-template/vim-slim'
   Plug 'airblade/vim-gitgutter'
@@ -30,7 +25,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'schickling/vim-bufonly'
   Plug 'elixir-lang/vim-elixir'
   Plug 'mxw/vim-jsx'
-  Plug 'scrooloose/nerdtree'
 
   Plug 'mattn/emmet-vim'
 
@@ -76,23 +70,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = 'challenger_deep'
 let g:airline_powerline_fonts = 1
 
-" Solarized
-" syntax on
-" set background=dark
-" colorscheme solarized
-
-let g:challenger_deep_terminal_italics = 1
-let g:challenger_deep_termcolors = 16
-colorscheme challenger_deep
-
-" Neomake
-let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
-let g:neomake_slim_enabled_makers = ['slimlint']
-let g:neomake_javascript_eslint_maker = {
-  \ 'args': ['--no-colors', '--reporter', 'inline', '--preset=airbnb'],
-  \ 'errorformat': '%f: line %l\, col %c\, %m',
-\}
-let g:neomake_javascript_enabled_markers = ['eslint']
 " BufOnly
 nmap <silent> <leader>x :BufOnly<CR>
 
@@ -108,10 +85,6 @@ let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:syntastic_javascript_checkers = ['eslint']
 
 " NerdTree
-nnoremap <silent><Leader>k :NERDTreeToggle<CR>
-
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 " vim-go
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"

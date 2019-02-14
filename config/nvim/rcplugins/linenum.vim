@@ -1,0 +1,1 @@
+Plug 'opodartho/vim-linenum'
