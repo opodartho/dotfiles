@@ -1,24 +1,15 @@
 call plug#begin('~/.config/nvim/plugged')
-  Plug 'junegunn/fzf', { 'do': './install --all' }
-  Plug 'junegunn/fzf.vim'
   " navigate up a directory with '-' in netrw, among other things
   Plug 'tpope/vim-vinegar'
 
-  Plug 'tpope/vim-repeat' | Plug 'tpope/vim-surround'
   Plug 'tpope/vim-rails'
-  Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-endwise'
 
 
 
-  Plug 'vim-airline/vim-airline'
 
   Plug 'slim-template/vim-slim'
-  Plug 'airblade/vim-gitgutter'
 
-  Plug 'mileszs/ack.vim'
 
-  Plug 'Raimondi/delimitMate' " automatic closing of quotes, parenthesis, brackets, etc.
 
   Plug 'takac/vim-hardtime'
 
@@ -37,44 +28,6 @@ call plug#end()
 autocmd BufNewFile,BufRead *.slim setlocal filetype=slim
 autocmd BufNewFile,BufRead *.slime setlocal filetype=slim
 
-" FZF fuzzy finder
-nnoremap <silent> <C-P> :FZF<cr>
-nnoremap <silent> <leader>a :Ag<cr>
-augroup localfzf
-  autocmd!
-  autocmd FileType fzf :tnoremap <buffer> <C-J> <C-J>
-  autocmd FileType fzf :tnoremap <buffer> <C-K> <C-K>
-augroup END
-
-function! s:buflist()
-  redir => ls
-  silent ls
-  redir END
-  return split(ls, '\n')
-endfunction
-
-function! s:bufopen(e)
-  execute 'buffer' matchstr(a:e, '^[ 0-9]*')
-endfunction
-
-nnoremap <silent> <C-B> :call fzf#run({
-\   'source':  reverse(<sid>buflist()),
-\   'sink':    function('<sid>bufopen'),
-\   'options': '+m',
-\   'down':    len(<sid>buflist()) + 2
-\ })<CR>
-
-
-" Airline
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = 'challenger_deep'
-let g:airline_powerline_fonts = 1
-
-" BufOnly
-nmap <silent> <leader>x :BufOnly<CR>
-
-" Tagbar toggle
-nmap <silent> <leader>t :TagbarToggle<CR>
 
 " Hardtime
 let g:hardtime_default_on = 0
@@ -84,7 +37,6 @@ let g:hardtime_showmsg = 0
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 let g:syntastic_javascript_checkers = ['eslint']
 
-" NerdTree
 " vim-go
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
@@ -121,3 +73,5 @@ endfunction
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 autocmd FileType go nmap <Leader>gc <Plug>(go-coverage-toggle)
+" BufOnly
+nmap <silent> <leader>x :BufOnly<CR>

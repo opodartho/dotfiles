@@ -3,9 +3,6 @@ set nocompatible " not compatible with vi
 let mapleader=','
 let g:mapleader=','
 
-" Load plugins
-source ~/.config/nvim/plugins.vim
-
 function! s:SourceConfigFilesIn(directory)
   let directory_splat = '~/.config/nvim/' . a:directory . '/*'
   for config_file in split(glob(directory_splat), '\n')
