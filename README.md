@@ -20,13 +20,13 @@ sudo apt install autoconf bison build-essential libssl-dev libyaml-dev libreadli
 ### pyenv
 ```bash
 $ git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-$ cd ~/.rbenv && src/configure && make -C src
+$ cd ~/.pyenv && src/configure && make -C src
 ```
 ## Node
 ### nodenv
 ```bash
 $ git clone https://github.com/nodenv/nodenv.git ~/.nodenv
-$ cd ~/.rbenv && src/configure && make -C src
+$ cd ~/.nodenv && src/configure && make -C src
 ```
 ### node-build
 ```bash
