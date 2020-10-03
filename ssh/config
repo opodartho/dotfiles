@@ -1,3 +1,7 @@
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IdentityFile ~/.ssh/id_rsa
 Host bpro.prod
   HostName 54.164.128.15
   User ubuntu
@@ -44,6 +48,71 @@ Host r2reapp.prod
   IdentityFile ~/.ssh/id_rsa
 Host b4p.prod
   HostName 213.162.241.181
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host sa.stg
+  HostName 172.18.0.229
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host sa.prd.1
+  HostName 172.18.0.246
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host sa.prd.2
+  HostName 172.18.0.247
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host sa.prd.3
+  HostName 172.18.0.248
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host sa.prd.4
+  HostName 172.18.0.249
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host sa.prd.5
+  HostName 172.18.1.15
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host sa.prd.6
+  HostName 172.18.1.16
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host sa.prd.7
+  HostName 172.18.1.26
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host sa.prd.8
+  HostName 172.18.1.27
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host sa.prd.9
+  HostName 172.18.1.28
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host sa.prd.10
+  HostName 172.18.1.29
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host saj.prd.1
+  HostName 10.101.74.133
+  User deployer
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
+Host saj.prd.2
+  HostName 10.101.74.149
   User deployer
   Port 22
   IdentityFile ~/.ssh/id_rsa

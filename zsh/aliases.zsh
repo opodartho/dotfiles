@@ -1,7 +1,12 @@
 if which tmux> /dev/null; then alias t='tmux'; fi
+if which tmux-cssh> /dev/null; then alias tc='tmux-cssh'; fi
 if which tmuxinator> /dev/null; then alias mux='tmuxinator'; fi
 if which exercism> /dev/null; then alias excm='exercism'; fi
 if which elixir> /dev/null; then alias e='elixir'; fi
+
+if which sshuttle > /dev/null; then
+  alias sa.vpn.3='sshuttle -r sa.prd.3 0.0.0.0/0 -v'
+fi
 
 if which exa > /dev/null; then
   alias ll='exa -la --git --color-scale'

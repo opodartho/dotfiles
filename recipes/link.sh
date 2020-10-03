@@ -2,6 +2,7 @@
 
 DOTFILES=$HOME/.dotfiles
 
+echo $DOTFILES
 echo -e "\nCreating symlinks"
 echo "=============================="
 
@@ -42,4 +43,16 @@ for file in $DOTFILES/ssh/*; do
     ln -s $file $target
   fi
 done
+
+echo -e "\n\ninstalling Brewfile"
+echo "============================="
+if [[ "$(uname)" == "Darwin" ]]; then
+  target=$HOME/Brewfile
+  if [ -e $target ]; then
+    echo "~{$target#HOME} already exists... Skipping."
+  else
+    ln "${DOTFILES}/$(uname)/Brewfile" "${HOME}/Brewfile"
+  fi
+fi
+
 echo -e "\n"

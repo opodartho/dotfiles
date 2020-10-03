@@ -2,7 +2,9 @@ Plug 'junegunn/fzf', { 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
 " FZF fuzzy finder
-nnoremap <silent> <C-P> :FZF<cr>
+let g:fzf_layout = { 'down': '40%' }
+
+nnoremap <silent> <C-P> :FZF<CR>
 nnoremap <silent> <leader>a :Ag<cr>
 augroup localfzf
   autocmd!
@@ -24,6 +26,6 @@ endfunction
 nnoremap <silent> <C-B> :call fzf#run({
 \   'source':  reverse(<sid>buflist()),
 \   'sink':    function('<sid>bufopen'),
-\   'options': '+m',
+\   'options': '+m --no-preview',
 \   'down':    len(<sid>buflist()) + 2
 \ })<CR>

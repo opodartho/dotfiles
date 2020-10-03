@@ -1,6 +1,12 @@
 # Plugins
-if [[ -d ~/.zplug ]];then
-  source ~/.zplug/init.zsh
+if [[ "$(uname)" == "Darwin" ]]; then
+  ZPLUG_HOME=/usr/local/opt/zplug
+else
+  ZPLUG_HOME=~/.zplug
+fi
+
+if [[ -d $ZPLUG_HOME ]];then
+  source $ZPLUG_HOME/init.zsh
 
   zplug "zplug/zplug"
   zplug "zsh-users/zsh-autosuggestions"
@@ -70,7 +76,9 @@ export EDITOR='vim'
 source $HOME/.dotfiles/zsh/aliases.zsh
 
 # tmuxinator completion
-source $HOME/.dotfiles/zsh/tmuxinator.zsh
+if [ $commands[kubectl] ]; then
+  source $HOME/.dotfiles/zsh/tmuxinator.zsh
+fi
 
 # neovim
 export PATH="$HOME/neovim/bin:$PATH"
@@ -79,7 +87,7 @@ export PATH="$HOME/neovim/bin:$PATH"
 export GPGKEY=1861B081
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
+export FZF_DEFAULT_OPTS='--height=40% --preview="cat {}" --preview-window=right:60%:wrap'
 # enable history
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000000
@@ -103,3 +111,6 @@ autoload -Uz compinit && compinit -i
 if which aws_completer > /dev/null; then
   source $(dirname $(which aws_completer))/aws_zsh_completer.sh
 fi
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+ssh-add -K ~/.ssh/id_rsa &> /dev/null
+ssh-add -A &> /dev/null
