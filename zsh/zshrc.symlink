@@ -1,6 +1,11 @@
+fpath=(~/.zsh/completion $fpath)
+autoload -Uz compinit && compinit -i
+
+
 # Plugins
-if [[ -d ~/.zplug ]];then
-  source ~/.zplug/init.zsh
+export ZPLUG_HOME=/usr/local/opt/zplug
+if [[ -d $ZPLUG_HOME ]];then
+  source $ZPLUG_HOME/init.zsh
 
   zplug "zplug/zplug"
   zplug "zsh-users/zsh-autosuggestions"
@@ -85,10 +90,6 @@ export HISTFILE=~/.zsh_history
 export HISTSIZE=10000000
 export SAVEHIST=10000000
 
-# Docker Compose Auto completion
-fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
-
 # kubectl autocomplete
 if [ $commands[kubectl] ]; then
   source <(kubectl completion zsh)
@@ -96,10 +97,12 @@ fi
 
 # only for building LFS
 export LFS=/mnt/lfs
-fpath=(~/.zsh/completion $fpath)
-autoload -Uz compinit && compinit -i
 
 # aws cli auto complete
 if which aws_completer > /dev/null; then
   source $(dirname $(which aws_completer))/aws_zsh_completer.sh
 fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

@@ -40,14 +40,6 @@ if has('mouse')
   set mouse=""
 endif
 
-" Clipboard copy/paste
-nnoremap <C-c> "+y<CR>==
-nnoremap <C-v> "+p<CR>==
-inoremap <C-c> <Esc>"+y<CR>==gi
-inoremap <C-v> <Esc>"+p<CR>==gi
-vnoremap <C-c> "+y<CR>gv=gv
-vnoremap <C-v> "+p<CR>gv=gv
-
 " File type specific settings
 augroup configgroup
   autocmd!
@@ -62,7 +54,7 @@ augroup configgroup
   autocmd VimResized * exe 'normal! \<c-w>='
   " save all files on focus lost, ignoring warnings about untitled buffers
   autocmd FocusLost * silent! wa
-  autocmd! BufWritePost * Neomake
+  " autocmd! BufWritePost * Neomake
 augroup END
 
 " Moving lines up or down
@@ -85,7 +77,6 @@ inoremap jk <esc> " remap exc
 
 " edit ~/.config/nvim/init.vim
 map <leader>ev :e! ~/.config/nvim/init.vim<cr>
-map <leader>ep :e! ~/.config/nvim/plugins.vim<cr>
 map <leader>es :source ~/.config/nvim/init.vim<cr>
 
 " switch between current and last buffer
@@ -99,27 +90,3 @@ nnoremap <C-h> <C-w><C-h>
 
 set splitbelow
 set splitright
-
-" toggle invisible characters
-set invlist
-set listchars=tab:▸\ ,eol:¬,trail:⋅,extends:❯,precedes:❮
-highlight SpecialKey ctermbg=none " make the highlighting of tabs less annoying
-set showbreak=↪
-set list " display end of line
-
-set cursorline " display cursorline
-set ruler " display ruler
-
-set colorcolumn=99 "display line after 80 char
-
-" enable vim spell change
-setlocal spell
-
-" enable word completion from dictionary
-set complete+=kspell
-
-" python
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/bin/python3'
-
-map <leader>m :!clear; gcc % -o %< && ./%<<CR>

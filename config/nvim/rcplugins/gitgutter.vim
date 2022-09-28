@@ -1,2 +1,2 @@
 Plug 'airblade/vim-gitgutter'
-nmap <silent> <leader>t :TagbarToggle<CR>
+nmap <silent> <leader>g :GitGutterToggle<CR>

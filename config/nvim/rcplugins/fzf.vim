@@ -21,6 +21,8 @@ function! s:bufopen(e)
   execute 'buffer' matchstr(a:e, '^[ 0-9]*')
 endfunction
 
+let g:fzf_layout = { 'down': '40%' }
+
 nnoremap <silent> <C-B> :call fzf#run({
 \   'source':  reverse(<sid>buflist()),
 \   'sink':    function('<sid>bufopen'),
